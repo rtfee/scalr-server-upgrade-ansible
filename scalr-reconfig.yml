@@ -1,0 +1,4 @@
+---
+- raw: scalr-server-ctl reconfigure
+  environment:
+   PATH: /usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/opt/scalr-server/embedded/bin/
