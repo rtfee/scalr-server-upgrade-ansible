@@ -1,0 +1,48 @@
+---
+#### Stop the Scalr services then pull down the new Scalr package ####
+- name: Stop Service and Pull Package
+  hosts: scalr-all
+  user: centos
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: false
+  tasks:
+   - debug:
+      msg: Stopping All Scalr Services
+   - include: scalr-server-stop.yml
+   - debug:
+      msg: Updating Scalr Packages
+   - include: scalr-yum-update.yml
+#### Reconfigure the Scalr servers ####
+- name: DB Reconfigure
+  hosts: db
+  user: centos
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: False
+  tasks:
+   - debug:
+      msg: Reconfiguring Scalr Database Server
+   - include: scalr-reconfig.yml
+- name: Worker Reconfigure
+  hosts: worker
+  user: centos
+  sudo: true
+  gather_facts: False
+  tasks:
+   - debug:
+      msg: Reconfiguring Scalr App Server
+   - include: scalr-reconfig.yml
+- name: App Reconfigure
+  hosts: app
+  user: centos
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: False
+  tasks:
+   - debug:
+      msg: Reconfiguring Scalr Worker Server
+   - include: scalr-reconfig.yml
