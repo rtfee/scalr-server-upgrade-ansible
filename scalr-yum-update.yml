@@ -1,0 +1,3 @@
+---
+- yum: name=scalr-server state=latest update_cache=yes disablerepo=* enablerepo=scalr_scalr-server-ee
+  register: yumupdate
