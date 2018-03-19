@@ -1,0 +1,2 @@
+---
+- command: scalr-server-manage stop all
