@@ -16,7 +16,8 @@
    - include: scalr-yum-update.yml
    
 #### Reconfigure the Scalr servers ####
-##Reconfigure the DB first so it is up for the worker or app to connect to during the upgrade process##
+## Reconfigure the DB first so it is up for the worker or app to connect to during the upgrade process ##
+## General rule for a multi-node architecture: Upgrade the DB first, worker second, the rest of the nodes after ##
 - name: DB Reconfigure
   hosts: db
   user: centos
