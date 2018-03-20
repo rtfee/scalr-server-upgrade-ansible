@@ -21,6 +21,7 @@ scalr.app.com
 [worker]
 scalr.worker.com
 ```
+Add more hosts if you have an expanded architecture.
 
 ### How to run this playbook:
 ```
