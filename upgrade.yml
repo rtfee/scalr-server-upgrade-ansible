@@ -14,7 +14,9 @@
    - debug:
       msg: Updating Scalr Packages
    - include: scalr-yum-update.yml
+   
 #### Reconfigure the Scalr servers ####
+##Reconfigure the DB first so it is up for the worker or app to upgrade##
 - name: DB Reconfigure
   hosts: db
   user: centos
