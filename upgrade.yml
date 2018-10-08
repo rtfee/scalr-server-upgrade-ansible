@@ -3,9 +3,7 @@
 - name: Stop Service and Pull Package
   hosts: scalr-all
   user: ubuntu
-  become: yes
-  become_method: sudo
-  become_user: root
+  sudo: true
   gather_facts: false
   tasks:
    - debug:
