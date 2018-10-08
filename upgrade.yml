@@ -2,7 +2,7 @@
 #### Stop the Scalr services then pull down the new Scalr package ####
 - name: Stop Service and Pull Package
   hosts: scalr-all
-  user: centos
+  user: ubuntu
   become: yes
   become_method: sudo
   become_user: root
@@ -13,14 +13,14 @@
    - include: scalr-server-stop.yml
    - debug:
       msg: Updating Scalr Packages
-   - include: scalr-yum-update.yml
+   - include: scalr-apt-update.yml
    
 #### Reconfigure the Scalr servers ####
 ## Reconfigure the DB first so it is up for the worker or app to connect to during the upgrade process ##
 ## General rule for a multi-node architecture: Upgrade the DB first, worker second, the rest of the nodes after ##
 - name: DB Reconfigure
   hosts: db
-  user: centos
+  user: ubuntu
   become: yes
   become_method: sudo
   become_user: root
@@ -31,7 +31,7 @@
    - include: scalr-reconfig.yml
 - name: Worker Reconfigure
   hosts: worker
-  user: centos
+  user: ubuntu
   sudo: true
   gather_facts: False
   tasks:
@@ -40,7 +40,7 @@
    - include: scalr-reconfig.yml
 - name: App Reconfigure
   hosts: app
-  user: centos
+  user: ubuntu
   become: yes
   become_method: sudo
   become_user: root
