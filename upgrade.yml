@@ -29,15 +29,15 @@
    - debug:
       msg: Reconfiguring Scalr Database Server
    - include: scalr-reconfig.yml
-- name: Worker Reconfigure
-  hosts: worker
-  user: ubuntu
-  sudo: true
-  gather_facts: False
-  tasks:
-   - debug:
-      msg: Reconfiguring Scalr App Server
-   - include: scalr-reconfig.yml
+#- name: Worker Reconfigure
+#  hosts: worker
+#  user: ubuntu
+#  sudo: true
+#  gather_facts: False
+#  tasks:
+#   - debug:
+#      msg: Reconfiguring Scalr App Server
+#   - include: scalr-reconfig.yml
 - name: App Reconfigure
   hosts: app
   user: ubuntu
